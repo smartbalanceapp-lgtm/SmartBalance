@@ -107,18 +107,55 @@
     .ref-copy-btn:hover { background:#00b085; }
     .ref-copy-btn.copied { background:#065f46; color:white; }
 
-    /* EDUCACION */
+    /* EDUCACION — ACORDEÓN */
     .edu-bg { background:var(--fondo); }
-    .edu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:52px; }
-    .edu-card { background:white; border-radius:16px; padding:22px; border:1px solid var(--gris-claro); transition:transform 0.2s,box-shadow 0.2s; }
-    .edu-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.07); }
-    .edu-top { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
-    .edu-emoji { font-size:24px; }
-    .edu-num { font-family:'Syne',sans-serif; font-size:11px; font-weight:800; letter-spacing:1px; }
-    .edu-card h4 { font-family:'Syne',sans-serif; font-weight:700; font-size:15px; margin-bottom:6px; }
-    .edu-card p { font-size:12px; color:var(--gris); line-height:1.65; }
-    .edu-libro { display:flex; align-items:center; gap:6px; margin-top:12px; font-size:11px; color:var(--azul2); font-weight:600; text-decoration:none; padding:6px 10px; background:rgba(59,130,246,0.06); border-radius:8px; }
-    .edu-libro:hover { background:rgba(59,130,246,0.12); }
+    .edu-layout { display:grid; grid-template-columns:1fr 300px; gap:32px; margin-top:52px; align-items:start; }
+    .edu-articulos { display:flex; flex-direction:column; gap:10px; }
+
+    /* Acordeón */
+    .art-item { background:white; border-radius:18px; border:1px solid var(--gris-claro); overflow:hidden; transition:box-shadow 0.2s; }
+    .art-item.open { box-shadow:0 12px 40px rgba(30,58,138,0.10); border-color:transparent; }
+    .art-header { display:flex; align-items:center; gap:14px; padding:18px 22px; cursor:pointer; user-select:none; }
+    .art-header:hover { background:var(--fondo); }
+    .art-num-badge { font-family:'Syne',sans-serif; font-size:11px; font-weight:800; letter-spacing:1.5px; min-width:26px; }
+    .art-emoji { font-size:22px; flex-shrink:0; }
+    .art-titles { flex:1; min-width:0; }
+    .art-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:#1a1a2e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .art-sub { font-size:12px; color:var(--gris); margin-top:2px; }
+    .art-meta { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .art-time { font-size:11px; color:var(--gris); background:var(--fondo); padding:3px 10px; border-radius:50px; white-space:nowrap; }
+    .art-chevron { width:18px; height:18px; color:var(--gris); transition:transform 0.3s; flex-shrink:0; }
+    .art-item.open .art-chevron { transform:rotate(180deg); }
+
+    /* Contenido del artículo */
+    .art-body { display:none; padding:0 22px 22px; }
+    .art-item.open .art-body { display:block; }
+    .art-intro { font-size:14px; color:var(--gris); line-height:1.75; margin-bottom:20px; border-left:3px solid var(--azul2); padding-left:14px; font-style:italic; }
+    .art-seccion { margin-bottom:18px; }
+    .art-seccion-titulo { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--azul); margin-bottom:8px; }
+    .art-seccion-texto { font-size:13px; color:#374151; line-height:1.8; white-space:pre-line; }
+    .art-conclusion { margin-top:20px; background:linear-gradient(135deg,rgba(30,58,138,0.05),rgba(59,130,246,0.05)); border-radius:12px; padding:14px 16px; font-size:13px; color:var(--azul); font-weight:500; line-height:1.7; }
+    .art-conclusion::before { content:"💡 "; }
+
+    /* Libros dentro del artículo */
+    .art-libros { margin-top:20px; display:flex; flex-direction:column; gap:8px; }
+    .art-libro-link { display:flex; align-items:center; gap:12px; background:#FFFBEB; border:1px solid #FDE68A; border-radius:12px; padding:12px 14px; text-decoration:none; transition:background 0.2s,transform 0.15s; }
+    .art-libro-link:hover { background:#FEF3C7; transform:translateX(3px); }
+    .art-libro-icon { font-size:22px; flex-shrink:0; }
+    .art-libro-info { flex:1; min-width:0; }
+    .art-libro-nombre { font-size:13px; font-weight:700; color:#92400E; line-height:1.3; }
+    .art-libro-cta { font-size:11px; color:#B45309; margin-top:2px; }
+
+    /* Panel lateral — libros */
+    .edu-sidebar { position:sticky; top:90px; }
+    .edu-sidebar-titulo { font-family:'Syne',sans-serif; font-size:13px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--azul); margin-bottom:16px; }
+    .libros-lista { display:flex; flex-direction:column; gap:10px; }
+    .libro-item { display:flex; align-items:flex-start; gap:12px; background:white; border-radius:14px; padding:14px; border:1px solid var(--gris-claro); text-decoration:none; transition:all 0.2s; }
+    .libro-item:hover { transform:translateX(3px); box-shadow:0 6px 20px rgba(0,0,0,0.07); border-color:var(--azul2); }
+    .libro-item-num { font-family:'Syne',sans-serif; font-size:10px; font-weight:800; color:var(--gris); min-width:20px; margin-top:2px; }
+    .libro-item-info { flex:1; min-width:0; }
+    .libro-item-nombre { font-size:12px; font-weight:700; color:#1a1a2e; line-height:1.4; }
+    .libro-item-amazon { font-size:10px; color:var(--azul2); margin-top:3px; font-weight:600; }
 
     /* CTA FINAL */
     .cta-bg { background:linear-gradient(135deg,var(--azul),var(--azul2)); text-align:center; position:relative; overflow:hidden; }
@@ -140,7 +177,8 @@
     /* RESPONSIVE */
     @media(max-width:900px) {
       .steps-grid { grid-template-columns:repeat(2,1fr); }
-      .edu-grid { grid-template-columns:repeat(2,1fr); }
+      .edu-layout { grid-template-columns:1fr; }
+      .edu-sidebar { position:static; }
     }
     @media(max-width:640px) {
       nav { padding:12px 16px; }
@@ -148,7 +186,10 @@
       section { padding:60px 20px; }
       .hero-inner { grid-template-columns:1fr; }
       .phone { width:140px; }
-      .steps-grid,.edu-grid { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr; }
+      .art-header { padding:14px 16px; gap:10px; }
+      .art-title { font-size:13px; }
+      .art-sub { display:none; }
       .hero-stats { gap:20px; flex-wrap:wrap; }
     }
   </style>
@@ -442,66 +483,551 @@
 <section class="edu-bg" id="educacion">
   <div class="section-inner">
     <div class="fade-in">
-      <span class="section-label t" data-es="EDUCACIÓN FINANCIERA" data-ca="EDUCACIÓ FINANCERA">EDUCACIÓN FINANCIERA</span>
-      <h2 class="section-title t" data-es="9 artículos para tomar el control de tu dinero" data-ca="9 articles per prendre el control dels teus diners">9 artículos para tomar el control de tu dinero</h2>
-      <p class="section-sub t" data-es="Sin jerga financiera. Cada artículo va al grano y termina con el libro que mejor profundiza en ese tema." data-ca="Sense argot financer. Cada article va al gra i acaba amb el llibre que millor aprofundeix en aquell tema.">Sin jerga financiera. Cada artículo va al grano y termina con el libro que mejor profundiza en ese tema.</p>
+      <span class="section-label">EDUCACIÓN FINANCIERA</span>
+      <h2 class="section-title">10 artículos para tomar el control de tu dinero</h2>
+      <p class="section-sub">Sin jerga financiera. Cada artículo va al grano y termina con el libro que mejor profundiza en ese tema.</p>
     </div>
-    <div class="edu-grid fade-in">
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🔍</div><div class="edu-num" style="color:#1E3A8A">01</div></div>
-        <h4 class="t" data-es="¿Dónde se va tu dinero?" data-ca="On van els teus diners?">¿Dónde se va tu dinero?</h4>
-        <p class="t" data-es="El primer despertar financiero. Aprende a detectar a dónde va cada euro y por qué la mayoría llega a fin de mes sin saber qué ha pasado." data-ca="El primer despertar financer. Aprèn a detectar on va cada euro i per què la majoria arriba a fi de mes sense saber què ha passat.">El primer despertar financiero. Aprende a detectar a dónde va cada euro y por qué la mayoría llega a fin de mes sin saber qué ha pasado.</p>
-        <a href="https://amzn.to/48Q1Mgs" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="La bolsa o la vida — Vicki Robin" data-ca="La borsa o la vida — Vicki Robin">La bolsa o la vida — Vicki Robin</span> →</a>
+    <div class="edu-layout fade-in">
+
+      <!-- ARTÍCULOS ACORDEÓN -->
+      <div class="edu-articulos">
+
+        <!-- 01 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#1E3A8A">01</span>
+            <span class="art-emoji">🔍</span>
+            <div class="art-titles">
+              <div class="art-title">¿Dónde se va tu dinero?</div>
+              <div class="art-sub">El primer paso para tomar el control</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">La mayoría de personas llegan a fin de mes sin saber exactamente en qué han gastado su dinero. No es culpa tuya: nadie nos enseña a gestionar las finanzas.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">El problema invisible</div><div class="art-seccion-texto">El dinero se escapa por pequeños gastos que apenas notamos: suscripciones que no usamos, cafés diarios, compras impulsivas online, gastos del móvil que se nos olvidaron... Individualmente parecen insignificantes. Sumados al mes, pueden suponer entre 200€ y 500€ que desaparecen sin que lo veamos.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cómo empezar?</div><div class="art-seccion-texto">No necesitas una hoja de cálculo perfecta. Solo necesitas hacer UNA COSA: durante las próximas 2 semanas, anota cada gasto que hagas. Puedes usar el móvil, una libreta, o esta app. Lo importante es la conciencia, no la perfección.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Las 4 categorías que cambian todo</div><div class="art-seccion-texto">Clasifica tus gastos en solo 4 grupos:
+
+🏠 Vivienda y básicos (luz, agua, gas)
+🍕 Alimentación y ocio
+📱 Suscripciones y tecnología
+🚗 Transporte
+
+Cuando veas los números reales, sabrás exactamente dónde actuar.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La regla del 1%</div><div class="art-seccion-texto">No intentes cambiarlo todo de golpe. Elige UN gasto esta semana que puedas reducir o eliminar. Solo uno. Pequeño. El hábito de revisar tus gastos se construye igual que cualquier otro hábito: con constancia, no con grandes cambios.</div></div>
+            <div class="art-conclusion">Conocer tu dinero es poder. No para privarte de nada, sino para elegir conscientemente dónde va cada euro.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/48Q1Mgs" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">La bolsa o la vida — Vicki Robin</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#00C896">02</span>
+            <span class="art-emoji">💰</span>
+            <div class="art-titles">
+              <div class="art-title">El hábito del ahorro</div>
+              <div class="art-sub">Cómo ahorrar sin que duela</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 4 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">"Voy a ahorrar lo que me sobre a fin de mes." Este pensamiento es el error más común. Al final del mes, nunca sobra nada. El ahorro no funciona así.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">El método que funciona: págate primero</div><div class="art-seccion-texto">En cuanto recibes tu sueldo, mueve una cantidad fija a otra cuenta. Antes de pagar nada. Antes de hacer nada. No importa si son 20€ o 200€. Lo que importa es que el movimiento sea automático y ocurra el mismo día del ingreso.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cuánto debería ahorrar?</div><div class="art-seccion-texto">La regla 50/30/20 es un buen punto de partida:
+
+50% → Gastos necesarios (vivienda, comida, suministros)
+30% → Ocio y caprichos
+20% → Ahorro e inversión
+
+Si ahora mismo ahorras 0€, no empieces con el 20%. Empieza con el 5%. El porcentaje importa menos que el hábito.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La cuenta separada</div><div class="art-seccion-texto">Abre una cuenta de ahorro separada de tu cuenta corriente. Que no tenga tarjeta. Que no sea fácil de acceder. La fricción es tu aliada: si tienes que hacer un esfuerzo para gastar el ahorro, lo gastarás menos.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El poder del interés compuesto</div><div class="art-seccion-texto">Si ahorras 100€ al mes durante 30 años al 7% anual, tendrás más de 120.000€. Con 200€/mes, superarías los 240.000€.
+
+El secreto no es cuánto ahorras al principio. Es empezar pronto y ser constante.</div></div>
+            <div class="art-conclusion">El ahorro no es privación. Es elegir tu libertad futura sobre el placer inmediato. Y eso, con el tiempo, se convierte en el mejor hábito que puedes tener.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4dcxYMt" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">El hombre más rico de Babilonia — George Clason</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#3B82F6">03</span>
+            <span class="art-emoji">🛡️</span>
+            <div class="art-titles">
+              <div class="art-title">El colchón de emergencia</div>
+              <div class="art-sub">Tu red de seguridad financiera</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">El coche se avería. La lavadora se rompe. Pierdes el trabajo. Sin un colchón de emergencia, cualquiera de estos eventos puede desestabilizar completamente tu economía.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Qué es el colchón de emergencia?</div><div class="art-seccion-texto">Es dinero guardado específicamente para imprevistos. No para vacaciones, no para caprichos, no para "por si acaso quiero algo". Solo para emergencias reales: desempleo, enfermedad, reparaciones imprevistas.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cuánto necesito?</div><div class="art-seccion-texto">La recomendación estándar es entre 3 y 6 meses de tus gastos totales. Si tus gastos mensuales son 1.500€, tu colchón ideal es entre 4.500€ y 9.000€.
+
+Si tienes trabajo estable: 3 meses es suficiente.
+Si eres autónomo o tu trabajo es inestable: apunta a 6 meses.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Dónde guardarlo?</div><div class="art-seccion-texto">En un lugar accesible pero que genere algo de rentabilidad. Las cuentas remuneradas son perfectas: actualmente dan entre un 2,5% y un 3,75% TAE, están garantizadas por el Fondo de Garantía de Depósitos hasta 100.000€, y puedes retirar el dinero cuando lo necesites.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Cómo construirlo sin agobios</div><div class="art-seccion-texto">No intentes acumular el colchón completo de golpe. Define un objetivo mensual pequeño y constante.
+
+Ejemplo: 100€/mes → en 18 meses tienes 1.800€ de colchón.
+
+Cada vez que llegues a un hito (500€, 1.000€, 3 meses de gastos...) celébralo. Estás construyendo seguridad real.</div></div>
+            <div class="art-conclusion">El colchón de emergencia es la base de todo. Sin él, cualquier imprevisto puede hacerte perder todo lo que has construido. Con él, puedes dormir tranquilo y tomar mejores decisiones.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4dkqlDJ" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">El millonario de al lado — Thomas Stanley</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#EF4444">04</span>
+            <span class="art-emoji">📉</span>
+            <div class="art-titles">
+              <div class="art-title">La inflación</div>
+              <div class="art-sub">El ladrón silencioso de tu dinero</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">Cada año que pasa, tu dinero vale menos. No porque lo gastes, sino porque los precios suben. Este fenómeno se llama inflación y es el mayor enemigo del dinero parado. Entenderlo es el primer paso para combatirlo.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Qué es la inflación?</div><div class="art-seccion-texto">La inflación es el aumento generalizado y sostenido de los precios de bienes y servicios a lo largo del tiempo. Si hoy pagas 100€ por la compra semanal y el año que viene pagas 103€ por exactamente lo mismo, la inflación ha sido del 3%. Tu dinero no ha cambiado, pero su poder de compra ha disminuido. En España, la inflación media histórica ronda el 2-3% anual, aunque en 2022 llegó a superar el 10%.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cómo te afecta en el día a día?</div><div class="art-seccion-texto">La inflación actúa de forma invisible pero constante:
+
+🛒 La cesta de la compra: los alimentos, la energía y los servicios cuestan más cada año.
+🏠 El alquiler y la vivienda: los precios inmobiliarios tienden a subir con la inflación.
+💼 Tu salario real: si tu sueldo sube un 2% pero la inflación es del 4%, en realidad ganas menos.
+🏦 Tus ahorros parados: 10.000€ en una cuenta al 0% con inflación del 3% equivalen a tener 9.700€ de poder adquisitivo al año siguiente. Pierdes 300€ sin gastarlos.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Qué podemos hacer ante la inflación?</div><div class="art-seccion-texto">Hay estrategias concretas para protegerte:
+
+💰 No dejes dinero parado: una cuenta remunerada al 2-3% TAE compensa parcialmente la inflación.
+📈 Invierte a largo plazo: históricamente, la bolsa ha superado la inflación con creces (el S&amp;P 500 ha dado ~10% anual).
+🏠 Activos reales: la vivienda, el oro y las materias primas tienden a mantener o aumentar su valor con la inflación.
+📊 ETFs de inflación: existen fondos específicos diseñados para proteger contra la inflación (TIPS, bonos indexados).
+💼 Negocia tu salario: pide subidas que al menos igualen la inflación para no perder poder adquisitivo.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La regla práctica</div><div class="art-seccion-texto">Una forma sencilla de calcular cuándo se reduce a la mitad el valor de tu dinero por la inflación es la Regla del 72: divide 72 entre la tasa de inflación y obtendrás los años que tardaría tu dinero en valer la mitad.
+
+Con inflación del 3%: 72 ÷ 3 = 24 años para que tu poder adquisitivo se reduzca a la mitad.
+Con inflación del 6%: 72 ÷ 6 = 12 años.
+
+Por eso no actuar tiene un coste real. Hacer algo, aunque sea pequeño, siempre es mejor que no hacer nada.</div></div>
+            <div class="art-conclusion">La inflación no se puede parar, pero sí se puede combatir. Entender que el dinero parado pierde valor es el primer paso para tomar decisiones más inteligentes con tus ahorros.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4tJCLeF" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">Lo que nunca cambia — Morgan Housel</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#EF4444">05</span>
+            <span class="art-emoji">🔓</span>
+            <div class="art-titles">
+              <div class="art-title">Cómo salir de las deudas</div>
+              <div class="art-sub">La hoja de ruta para recuperar tu libertad financiera</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">La deuda es la herramienta más poderosa para transferir riqueza de las personas normales a las instituciones financieras. Salir de las deudas no es solo matemática — requiere un plan, disciplina y la mentalidad correcta.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">Por qué las deudas nos tienen atrapados</div><div class="art-seccion-texto">El sistema financiero está diseñado para que pagues lo mínimo posible cada mes y durante el máximo tiempo posible. Una deuda de 10.000€ al 20% TAE pagando el mínimo mensual puede tardarse más de 10 años en cancelar y costarte más del doble en intereses.
+
+Además, las deudas tienen un efecto psicológico devastador: generan estrés, limitan tus opciones laborales y te impiden construir patrimonio porque cada euro que entra ya tiene dueño.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El método bola de nieve</div><div class="art-seccion-texto">Dave Ramsey popularizó este método simple y efectivo:
+
+1️⃣ Lista todas tus deudas de menor a mayor saldo (independientemente del interés).
+2️⃣ Paga el mínimo en todas excepto en la más pequeña.
+3️⃣ Destina todo el dinero extra a cancelar la más pequeña.
+4️⃣ Cuando la cancelas, suma esa cuota a la siguiente deuda más pequeña.
+5️⃣ La bola va creciendo y cada deuda se cancela más rápido.
+
+La ventaja no es matemática sino psicológica: ver deudas cancelarse genera motivación para seguir.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El método avalancha (el más eficiente matemáticamente)</div><div class="art-seccion-texto">Si prefieres optimizar al máximo:
+
+1️⃣ Lista todas tus deudas de mayor a menor interés.
+2️⃣ Paga el mínimo en todas excepto la de mayor interés.
+3️⃣ Destina todo el extra a la deuda más cara.
+4️⃣ Cuando se cancela, pasa a la siguiente.
+
+Pagas menos intereses en total, pero tardas más en ver la primera deuda cancelada. Requiere más disciplina psicológica.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Negociar con el banco</div><div class="art-seccion-texto">Muchas personas no saben que pueden negociar con su banco:
+
+📞 Llama y pide una reducción del tipo de interés — especialmente si tienes buen historial de pagos.
+🔄 Considera reunificar deudas si tienes varias — puede bajar la cuota mensual, aunque cuidado con alargar el plazo.
+⚠️ Nunca pares de pagar sin acuerdo previo — genera intereses de demora y daña tu historial crediticio.
+💬 Si estás en dificultades, la mayoría de bancos tienen programas de reestructuración — pídelos antes de incumplir.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La regla de oro antes de invertir</div><div class="art-seccion-texto">Si tienes deudas con interés superior al 8%, cancelarlas es matemáticamente la mejor inversión que puedes hacer.
+
+No existe ninguna inversión que garantice un 8% anual. La bolsa ha dado históricamente un 8-10% anual, pero con años de pérdidas incluidos. Pagar una deuda al 15% es un retorno garantizado del 15%.
+
+El orden correcto: primero cancela deudas caras, luego construye el colchón, luego invierte.</div></div>
+            <div class="art-conclusion">Salir de las deudas no es una cuestión de ingresos — es una cuestión de prioridades y plan. Con el método correcto y constancia, cualquier deuda tiene fecha de cancelación.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/3PaIk7y" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">La transformación total de su dinero — Dave Ramsey</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#8B5CF6">06</span>
+            <span class="art-emoji">🧠</span>
+            <div class="art-titles">
+              <div class="art-title">La psicología del dinero</div>
+              <div class="art-sub">Por qué tomamos malas decisiones financieras</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 4 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">El mayor enemigo del inversor no está en los mercados. Está en nuestra propia cabeza. Las emociones, los sesgos y los patrones de pensamiento heredados nos llevan a tomar decisiones financieras que sabemos que son malas... y las tomamos igualmente.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">Por qué sabemos lo que hay que hacer pero no lo hacemos</div><div class="art-seccion-texto">Todos sabemos que hay que ahorrar, que no hay que endeudarse para consumir, que hay que invertir a largo plazo. Pero la mayoría no lo hace. ¿Por qué?
+
+La respuesta está en la psicología. Nuestro cerebro no fue diseñado para manejar conceptos como el interés compuesto, la inflación a 30 años o la volatilidad de los mercados. Fue diseñado para sobrevivir, y eso significa reaccionar al miedo y a la codicia de forma inmediata.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Los sesgos que más dinero nos cuestan</div><div class="art-seccion-texto">🔴 Sesgo de confirmación: solo buscamos información que confirma lo que ya creemos.
+🔴 Aversión a las pérdidas: perder 100€ duele el doble que ganar 100€.
+🔴 Comportamiento de manada: compramos cuando todos compran y vendemos cuando todos venden — exactamente al revés de lo que hay que hacer.
+🔴 Descuento hiperbólico: preferimos 100€ hoy a 150€ en un año, aunque matemáticamente sea una mala decisión.
+🔴 Exceso de confianza: pensamos que somos mejores inversores que la media.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La riqueza que no se ve</div><div class="art-seccion-texto">Morgan Housel señala algo contraintuitivo: la riqueza real no se ve. El coche caro, el reloj lujoso y las vacaciones exóticas son señales de dinero gastado, no de riqueza acumulada.
+
+La verdadera riqueza son los activos que todavía no se han convertido en consumo. Es el dinero que no has gastado. La persona más rica de tu barrio puede ser la que conduce un coche modesto y lleva 20 años invirtiendo en silencio.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Cómo reprogramar tu relación con el dinero</div><div class="art-seccion-texto">T. Harv Eker explica que todos tenemos un 'termostato financiero' — una temperatura de riqueza con la que nos sentimos cómodos. Si ganamos más de esa temperatura, inconscientemente lo gastamos. Si ganamos menos, inconscientemente lo compensamos.
+
+La buena noticia es que ese termostato se puede reprogramar:
+✅ Automatiza el ahorro antes de que llegue a tu cuenta.
+✅ Define tu número: ¿cuánto necesitas para sentirte seguro?
+✅ Cambia la pregunta de '¿puedo permitírmelo?' por '¿cómo puedo permitírmelo?'.</div></div>
+            <div class="art-conclusion">El dinero es un tema tan emocional como racional. Entender tus sesgos y patrones mentales es tan importante como entender los productos financieros.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4wiUHPF" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">La psicología del dinero — Morgan Housel</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+              <a href="https://amzn.to/4u1wj3h" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">Los secretos de la mente millonaria — T. Harv Eker</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#F59E0B">07</span>
+            <span class="art-emoji">🔄</span>
+            <div class="art-titles">
+              <div class="art-title">Mentalidad financiera: empleado vs inversor</div>
+              <div class="art-sub">El salto mental hacia la libertad financiera</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">Hay dos formas de relacionarse con el dinero. La mayoría de personas han sido educadas solo para una de ellas. Entender la diferencia entre estas dos mentalidades puede cambiar completamente tu situación financiera.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">Los cuatro cuadrantes de Kiyosaki</div><div class="art-seccion-texto">Robert Kiyosaki describe cuatro formas de generar dinero:
+
+E (Empleado): trabajas para otros. Cambias tiempo por dinero. Si dejas de trabajar, dejas de cobrar.
+A (Autónomo): trabajas para ti mismo. Tienes más libertad pero sigues cambiando tiempo por dinero.
+D (Dueño de negocio): tienes un sistema que trabaja para ti aunque tú no estés.
+I (Inversor): tu dinero trabaja para ti. Los activos generan ingresos sin que dediques tiempo.
+
+La mayoría vivimos en el lado izquierdo (E y A). La libertad financiera está en el lado derecho (D e I).</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Por qué el sistema te prepara para ser empleado</div><div class="art-seccion-texto">El sistema educativo tradicional enseña a ser un buen empleado: ir al colegio, sacar buenas notas, encontrar un buen trabajo. No enseña a invertir, a crear activos ni a entender cómo funciona el dinero.
+
+Esto no es una conspiración — es simplemente que el sistema fue diseñado en la era industrial, cuando lo que se necesitaba eran buenos trabajadores. El mundo ha cambiado, pero la educación no tanto.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El primer paso para cambiar de cuadrante</div><div class="art-seccion-texto">Cambiar de cuadrante no significa dejar tu trabajo mañana. Significa empezar a construir activos en paralelo:
+
+📈 Invierte parte de tu ahorro mensual en ETFs indexados.
+🏠 Si tienes capital, considera activos inmobiliarios.
+💡 Desarrolla habilidades que puedas monetizar fuera de tu trabajo.
+📚 Edúcate financieramente — cada hora que dedicas a entender el dinero tiene un retorno enorme.
+
+El objetivo no es hacerse rico rápido, sino construir una base que con el tiempo genere ingresos sin necesitar tu tiempo.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La mentalidad de Napoleon Hill</div><div class="art-seccion-texto">Napoleon Hill estudió durante 20 años a más de 500 personas millonarias y encontró un patrón común: todas tenían un objetivo claro, una determinación inquebrantable y la capacidad de convertir los fracasos en aprendizaje.
+
+Su conclusión: la riqueza empieza en la mente antes de llegar al banco. No es solo pensar positivo — es tener un plan, rodearte de las personas correctas y actuar con constancia.</div></div>
+            <div class="art-conclusion">No necesitas ser millonario para empezar a pensar como uno. El cambio de mentalidad es el primer activo que puedes construir, y no cuesta dinero.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/49bfdrF" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">Piense y hágase rico — Napoleon Hill</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+              <a href="https://amzn.to/4nuymKS" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">El Cuadrante del Flujo de Dinero — Robert Kiyosaki</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#00C896">08</span>
+            <span class="art-emoji">🏦</span>
+            <div class="art-titles">
+              <div class="art-title">Cuentas remuneradas</div>
+              <div class="art-sub">Haz que tu dinero trabaje mientras duermes</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">Tienes dinero parado en el banco y no te genera nada. Mientras tanto, la inflación lo va erosionando poco a poco. Las cuentas remuneradas son la solución más sencilla y segura para empezar a cambiar esto.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Qué es una cuenta remunerada?</div><div class="art-seccion-texto">Es una cuenta bancaria normal, con la diferencia de que el banco te paga intereses por el dinero que tienes depositado. A diferencia de un depósito a plazo fijo, puedes retirar tu dinero en cualquier momento sin penalizaciones. Es liquidez total con rentabilidad.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cuánto puedo ganar?</div><div class="art-seccion-texto">Con las cuentas remuneradas actuales puedes obtener entre un 2,5% y un 3,75% TAE anual. Esto significa que si tienes 10.000€ guardados, puedes ganar entre 250€ y 375€ al año sin hacer absolutamente nada. Si tienes ese dinero en una cuenta corriente normal, ganas 0€.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Son seguras?</div><div class="art-seccion-texto">Sí. Las cuentas remuneradas de bancos regulados están cubiertas por el Fondo de Garantía de Depósitos (FGD), que protege hasta 100.000€ por titular y entidad. Esto significa que aunque el banco quebrara, el Estado garantiza que recuperas tu dinero hasta ese límite. Es el mismo nivel de seguridad que cualquier cuenta corriente.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Para quién son ideales?</div><div class="art-seccion-texto">Para cualquier persona que tenga dinero ahorrado y no lo necesite de forma inmediata. Son perfectas para:
+
+🛡️ El colchón de emergencia: tienes el dinero disponible y encima genera intereses.
+💰 El ahorro mensual mientras decides qué hacer con él.
+⏳ Dinero que vas a necesitar en 1-2 años y no quieres arriesgar en bolsa.
+
+No son para invertir a largo plazo, donde las acciones y ETFs ofrecen más rentabilidad. Son para el dinero que necesitas tener seguro y accesible.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cómo elegir la mejor?</div><div class="art-seccion-texto">Mira estos 3 factores:
+
+1. TAE (Tasa Anual Equivalente): cuanto más alta, mejor. Compara siempre la TAE, no el TIN.
+2. Condiciones: algunas requieren domiciliar la nómina o hacer un número mínimo de compras. Busca las que no pongan condiciones.
+3. Garantía: comprueba que está cubierta por el FGD o equivalente europeo.
+
+Trade Republic (3,75% TAE) y MyInvestor (2,5% TAE) son actualmente dos de las mejores opciones sin condiciones del mercado español.</div></div>
+            <div class="art-conclusion">Una cuenta remunerada no te hará rico, pero es el primer paso inteligente: tu dinero deja de perder valor y empieza a crecer, sin riesgo y sin esfuerzo. Es la base sobre la que construir el resto.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4wk7EZj" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">Todo lo que necesitas saber para empezar a invertir hoy</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#10B981">09</span>
+            <span class="art-emoji">📈</span>
+            <div class="art-titles">
+              <div class="art-title">El interés compuesto</div>
+              <div class="art-sub">La octava maravilla del mundo</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">Einstein llamó al interés compuesto la octava maravilla del mundo. El que lo entiende lo gana, el que no, lo paga. Es el principio más poderoso de las finanzas personales y también el más ignorado.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Qué es el interés compuesto?</div><div class="art-seccion-texto">El interés compuesto es ganar intereses sobre los intereses que ya has ganado. A diferencia del interés simple, donde solo ganas sobre el capital inicial, con el interés compuesto tu dinero crece de forma exponencial.
+
+Ejemplo simple:
+Interés simple: 1.000€ al 10% → cada año ganas 100€ → en 30 años tienes 4.000€
+Interés compuesto: 1.000€ al 10% → en 30 años tienes 17.449€
+
+La diferencia: 13.449€ extra sin hacer nada más que dejar el dinero trabajar.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El tiempo es el ingrediente secreto</div><div class="art-seccion-texto">El interés compuesto necesita tiempo para mostrar su verdadero poder. Los primeros años parece que no pasa nada. Luego se dispara.
+
+Invirtiendo 200€/mes al 8% anual:
+• En 10 años: ~36.000€
+• En 20 años: ~118.000€
+• En 30 años: ~298.000€
+
+En los últimos 10 años ganas más que en los primeros 20 juntos. Por eso empezar hoy, aunque sea con poco, vale más que esperar a tener más.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La regla del 72</div><div class="art-seccion-texto">¿Cuánto tarda en doblarse tu dinero? Hay una fórmula sencilla: divide 72 entre la rentabilidad anual.
+
+Al 4% (cuenta remunerada): 72 / 4 = 18 años para doblar
+Al 7% (ETF indexado): 72 / 7 = ~10 años para doblar
+Al 10% (bolsa histórica): 72 / 10 = 7,2 años para doblar
+
+Esta regla te ayuda a comparar productos financieros de forma instantánea y entender el coste real del tiempo cuando no inviertes.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El interés compuesto en tu contra</div><div class="art-seccion-texto">El interés compuesto también funciona en tu contra cuando tienes deudas.
+
+Una tarjeta revolving al 25% TAE con 3.000€ de deuda:
+Pagando solo el mínimo → tardas más de 10 años en cancelarla
+Intereses totales pagados → más de 4.500€ adicionales
+
+Por eso las deudas caras son el enemigo número uno del interés compuesto. Mientras tengas deudas al 8% o más, cualquier euro que inviertas está luchando contra una corriente en tu contra.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Cómo aprovecharlo al máximo</div><div class="art-seccion-texto">Las 3 claves para maximizar el interés compuesto:
+
+1️⃣ Empieza hoy — cada año que esperas cuesta más de lo que imaginas
+2️⃣ Sé constante — una aportación mensual fija es más poderosa que grandes aportaciones irregulares
+3️⃣ No interrumpas — vender en momentos de caída rompe el ciclo compuesto y cristaliza las pérdidas
+
+El enemigo del interés compuesto no es la bolsa — es la impaciencia.</div></div>
+            <div class="art-conclusion">El interés compuesto no es magia — es matemática. Pero para quien lo aprovecha a tiempo, el resultado parece mágico.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/4tHPLRU" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">Dinero — Tony Robbins</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="art-item" onclick="toggleArticulo(this)">
+          <div class="art-header">
+            <span class="art-num-badge" style="color:#8B5CF6">10</span>
+            <span class="art-emoji">🚀</span>
+            <div class="art-titles">
+              <div class="art-title">Primeros pasos para invertir</div>
+              <div class="art-sub">Cómo empezar sin saber nada</div>
+            </div>
+            <div class="art-meta">
+              <span class="art-time">⏱️ 3 min</span>
+              <svg class="art-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="art-body">
+            <p class="art-intro">Invertir parece complicado, pero los primeros pasos son más sencillos de lo que crees. No necesitas saber de bolsa, ni tener mucho dinero, ni dedicar horas. Solo necesitas entender el orden correcto y empezar.</p>
+            <div class="art-seccion"><div class="art-seccion-titulo">El orden correcto lo es todo</div><div class="art-seccion-texto">Antes de invertir, hay tres pasos previos que no puedes saltarte:
+
+1️⃣ Colchón de emergencia: guarda entre 3 y 6 meses de tus gastos en una cuenta remunerada. Sin este colchón, cualquier imprevisto te obligará a vender tus inversiones en el peor momento.
+
+2️⃣ Cancela deudas caras: si tienes préstamos con interés superior al 8%, cancélalos antes de invertir. Ninguna inversión garantiza esa rentabilidad.
+
+3️⃣ Solo entonces invierte: cuando tengas el colchón y no tengas deudas caras, cada euro que inviertas trabajará para ti sin riesgo de que lo necesites mañana.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">¿Cuánto dinero necesito para empezar?</div><div class="art-seccion-texto">Mucho menos de lo que crees. Con brokers como Trade Republic puedes empezar desde 1€. Lo importante no es la cantidad inicial, sino la constancia.
+
+Invertir 100€/mes durante 20 años al 8% anual te da más de 58.000€.
+Invertir 200€/mes durante 20 años al 8% anual te da más de 116.000€.
+
+El tiempo es más importante que la cantidad. Empezar hoy con poco es mejor que esperar a tener más.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">El producto más recomendado para empezar</div><div class="art-seccion-texto">Para alguien que empieza, el producto más recomendado por los expertos es el ETF indexado global, como el MSCI World o el S&amp;P 500.
+
+¿Por qué? Porque con un solo producto inviertes en más de 1.500 empresas de todo el mundo automáticamente. No tienes que elegir acciones, no tienes que seguir los mercados, no tienes que tomar decisiones complejas.
+
+El coste es mínimo (menos del 0,2% anual) y históricamente ha dado una rentabilidad media del 8-10% anual a largo plazo.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">La estrategia del inversor principiante</div><div class="art-seccion-texto">La estrategia más simple y efectiva para empezar se llama DCA (Dollar Cost Averaging) o inversión periódica:
+
+✅ Fija una cantidad mensual que puedas mantener siempre (aunque sean 50€).
+✅ Invierte esa cantidad cada mes, pase lo que pase en los mercados.
+✅ No mires el precio. No intentes adivinar cuándo comprar más barato.
+✅ No vendas cuando el mercado caiga. Las caídas son oportunidades.
+
+Esta estrategia funciona porque promedias el precio de compra y eliminas las decisiones emocionales, que son el mayor enemigo del inversor principiante.</div></div>
+            <div class="art-seccion"><div class="art-seccion-titulo">Los errores más comunes del principiante</div><div class="art-seccion-texto">Conocerlos de antemano te ahorra dinero y frustraciones:
+
+❌ Invertir sin colchón de emergencia → acabas vendiendo en pérdidas cuando necesitas el dinero.
+❌ Invertir en lo que está de moda → cuando tú lo conoces, el precio ya ha subido.
+❌ Mirar la cartera cada día → genera ansiedad y decisiones impulsivas.
+❌ Vender cuando cae → las caídas son temporales, vender en pérdidas las hace permanentes.
+❌ Esperar al momento perfecto → el mejor momento para empezar siempre es hoy.</div></div>
+            <div class="art-conclusion">No necesitas ser experto para empezar a invertir. Necesitas orden, constancia y paciencia. Los mercados hacen el trabajo por ti si les das tiempo suficiente.</div>
+            <div class="art-libros">
+              <a href="https://amzn.to/3PfWZyj" class="art-libro-link" target="_blank" rel="nofollow noopener" onclick="event.stopPropagation()">
+                <span class="art-libro-icon">📚</span>
+                <div class="art-libro-info"><div class="art-libro-nombre">El pequeño libro para invertir con sentido común — John Bogle</div><div class="art-libro-cta">Ver en Amazon →</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin edu-articulos -->
+
+      <!-- SIDEBAR: LISTA DE LIBROS -->
+      <div class="edu-sidebar">
+        <div class="edu-sidebar-titulo">📚 Biblioteca recomendada</div>
+        <div class="libros-lista">
+          <a href="https://amzn.to/48Q1Mgs" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">01</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">La bolsa o la vida — Vicki Robin</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4dcxYMt" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">02</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">El hombre más rico de Babilonia — George Clason</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4dkqlDJ" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">03</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">El millonario de al lado — Thomas Stanley</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4tJCLeF" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">04</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">Lo que nunca cambia — Morgan Housel</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/3PaIk7y" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">05</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">La transformación total de su dinero — Dave Ramsey</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4wiUHPF" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">06</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">La psicología del dinero — Morgan Housel</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4u1wj3h" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">06b</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">Los secretos de la mente millonaria — T. Harv Eker</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/49bfdrF" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">07</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">Piense y hágase rico — Napoleon Hill</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4nuymKS" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">07b</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">El Cuadrante del Flujo de Dinero — Kiyosaki</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4wk7EZj" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">08</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">Todo lo que necesitas saber para empezar a invertir hoy</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/4tHPLRU" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">09</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">Dinero — Tony Robbins</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+          <a href="https://amzn.to/3PfWZyj" class="libro-item" target="_blank" rel="nofollow noopener">
+            <span class="libro-item-num">10</span>
+            <div class="libro-item-info"><div class="libro-item-nombre">El pequeño libro para invertir con sentido común — John Bogle</div><div class="libro-item-amazon">Ver en Amazon →</div></div>
+          </a>
+        </div>
       </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">💰</div><div class="edu-num" style="color:#00C896">02</div></div>
-        <h4 class="t" data-es="El hábito del ahorro" data-ca="L'hàbit de l'estalvi">El hábito del ahorro</h4>
-        <p class="t" data-es="Cómo ahorrar sin que duela. El método que han usado las personas más ricas de la historia: págate primero a ti mismo." data-ca="Com estalviar sense que dolgui. El mètode que han usat les persones més riques de la història: paga't primer a tu mateix.">Cómo ahorrar sin que duela. El método que han usado las personas más ricas de la historia: págate primero a ti mismo.</p>
-        <a href="https://amzn.to/4dcxYMt" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="El hombre más rico de Babilonia" data-ca="L'home més ric de Babilònia">El hombre más rico de Babilonia</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🛡️</div><div class="edu-num" style="color:#3B82F6">03</div></div>
-        <h4 class="t" data-es="El colchón de emergencia" data-ca="El coixí d'emergència">El colchón de emergencia</h4>
-        <p class="t" data-es="Tu red de seguridad financiera. Por qué necesitas 6 meses de gastos guardados antes de pensar en invertir." data-ca="La teva xarxa de seguretat financera. Per què necessites 6 mesos de despeses guardades abans de pensar en invertir.">Tu red de seguridad financiera. Por qué necesitas 6 meses de gastos guardados antes de pensar en invertir.</p>
-        <a href="https://amzn.to/4dkqlDJ" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="El millonario de al lado" data-ca="El milionari del costat">El millonario de al lado</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">📉</div><div class="edu-num" style="color:#EF4444">04</div></div>
-        <h4 class="t" data-es="La inflación" data-ca="La inflació">La inflación</h4>
-        <p class="t" data-es="El ladrón silencioso que reduce el valor de tu dinero cada año. Por qué el dinero parado pierde poder adquisitivo y qué hacer." data-ca="El lladre silenciós que redueix el valor dels teus diners cada any. Per què els diners parats perden poder adquisitiu i què fer.">El ladrón silencioso que reduce el valor de tu dinero cada año. Por qué el dinero parado pierde poder adquisitivo y qué hacer.</p>
-        <a href="https://amzn.to/4tJCLeF" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="Lo que nunca cambia — Morgan Housel" data-ca="El que mai canvia — Morgan Housel">Lo que nunca cambia — Morgan Housel</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🔓</div><div class="edu-num" style="color:#EF4444">05</div></div>
-        <h4 class="t" data-es="Cómo salir de las deudas" data-ca="Com sortir dels deutes">Cómo salir de las deudas</h4>
-        <p class="t" data-es="La hoja de ruta para recuperar tu libertad financiera. El método bola de nieve, el método avalancha y cómo negociar con el banco." data-ca="La full de ruta per recuperar la teva llibertat financera. El mètode bola de neu, el mètode allau i com negociar amb el banc.">La hoja de ruta para recuperar tu libertad financiera. El método bola de nieve, el método avalancha y cómo negociar con el banco.</p>
-        <a href="https://amzn.to/3PaIk7y" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="La transformación total de su dinero" data-ca="La transformació total dels seus diners">La transformación total de su dinero</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🧠</div><div class="edu-num" style="color:#8B5CF6">06</div></div>
-        <h4 class="t" data-es="La psicología del dinero" data-ca="La psicologia dels diners">La psicología del dinero</h4>
-        <p class="t" data-es="Por qué tomamos malas decisiones financieras aunque sabemos lo que hay que hacer. Los sesgos que más dinero nos cuestan." data-ca="Per què prenem males decisions financeres tot i saber el que cal fer. Els biaixos que més diners ens costen.">Por qué tomamos malas decisiones financieras aunque sabemos lo que hay que hacer. Los sesgos que más dinero nos cuestan.</p>
-        <a href="https://amzn.to/4wiUHPF" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="La psicología del dinero — Morgan Housel" data-ca="La psicologia dels diners — Morgan Housel">La psicología del dinero — Morgan Housel</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🔄</div><div class="edu-num" style="color:#F59E0B">07</div></div>
-        <h4 class="t" data-es="Mentalidad financiera" data-ca="Mentalitat financera">Mentalidad financiera</h4>
-        <p class="t" data-es="Empleado vs inversor. Los 4 cuadrantes de Kiyosaki y el salto mental que separa a quienes construyen patrimonio de quienes no." data-ca="Empleat vs inversor. Els 4 quadrants de Kiyosaki i el salt mental que separa els qui construeixen patrimoni dels qui no.">Empleado vs inversor. Los 4 cuadrantes de Kiyosaki y el salto mental que separa a quienes construyen patrimonio de quienes no.</p>
-        <a href="https://amzn.to/49bfdrF" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="Piense y hágase rico — Napoleon Hill" data-ca="Pensa i fes-te ric — Napoleon Hill">Piense y hágase rico — Napoleon Hill</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🏦</div><div class="edu-num" style="color:#00C896">08</div></div>
-        <h4 class="t" data-es="Cuentas remuneradas" data-ca="Comptes remunerats">Cuentas remuneradas</h4>
-        <p class="t" data-es="Haz que tu dinero genere intereses sin riesgo mientras decides qué hacer con él. El primer paso de cualquier plan de inversión." data-ca="Fes que els teus diners generin interessos sense risc mentre decideixes què fer-ne. El primer pas de qualsevol pla d'inversió.">Haz que tu dinero genere intereses sin riesgo mientras decides qué hacer con él. El primer paso de cualquier plan de inversión.</p>
-        <a href="https://amzn.to/4wk7EZj" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="Todo lo que necesitas para invertir" data-ca="Tot el que necessites per invertir">Todo lo que necesitas para invertir</span> →</a>
-      </div>
-      <div class="edu-card">
-        <div class="edu-top"><div class="edu-emoji">🚀</div><div class="edu-num" style="color:#1E3A8A">09</div></div>
-        <h4 class="t" data-es="Primeros pasos para invertir" data-ca="Primers passos per invertir">Primeros pasos para invertir</h4>
-        <p class="t" data-es="Cómo empezar a invertir sin saber nada. ETFs indexados, DCA mensual y por qué el tiempo es más importante que la cantidad." data-ca="Com començar a invertir sense saber res. ETFs indexats, DCA mensual i per què el temps és més important que la quantitat.">Cómo empezar a invertir sin saber nada. ETFs indexados, DCA mensual y por qué el tiempo es más importante que la cantidad.</p>
-        <a href="https://amzn.to/3PfWZyj" class="edu-libro" target="_blank" rel="nofollow noopener">📖 <span class="t" data-es="El pequeño libro para invertir con sentido común" data-ca="El petit llibre per invertir amb seny">El pequeño libro para invertir con sentido común</span> →</a>
-      </div>
-    </div>
+
+    </div><!-- fin edu-layout -->
   </div>
 </section>
 
@@ -528,6 +1054,22 @@
 </footer>
 
 <script>
+  function toggleArticulo(item) {
+    var isOpen = item.classList.contains('open');
+    // Cerrar todos
+    document.querySelectorAll('.art-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    // Abrir el clickado si estaba cerrado
+    if (!isOpen) {
+      item.classList.add('open');
+      // Scroll suave para que se vea bien
+      setTimeout(function() {
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+  }
+
   function copyCode(id, btn) {
     var text = document.getElementById(id).innerText.trim();
     navigator.clipboard.writeText(text).then(function() {
